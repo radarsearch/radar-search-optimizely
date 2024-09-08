@@ -33,5 +33,5 @@ jobs:
         run: dotnet pack -c Release --output . --include-source --include-symbols  --no-build -p:PackageVersion=1.0.0 ${{env.package_name}}
 
       - name: Push
-        run: dotnet nuget push ${{env.package_name}}.1.0.0.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --skip-duplicate
+        run: dotnet nuget push ${{env.package_name}}.1.0.0.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source "nuget" --skip-duplicate
         
