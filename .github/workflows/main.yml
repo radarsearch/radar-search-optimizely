@@ -30,8 +30,8 @@ jobs:
         run: dotnet test --no-restore --verbosity quiet
 
       - name: Package Nuget
-        run: dotnet pack -c Release --output . --include-source --include-symbols  --no-build -p:PackageVersion=1.0.0 ${{env.package_name}}
+        run: dotnet pack -c Release --output . --include-source --include-symbols  --no-build -p:PackageVersion=1.0.1 ${{env.package_name}}
 
       - name: Push
-        run: dotnet nuget push ${{env.package_name}}.1.0.0.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push ${{env.package_name}}.1.0.1.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
         
