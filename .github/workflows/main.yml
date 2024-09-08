@@ -1,0 +1,37 @@
+name: CI - Main Package
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+env:
+  nuget_source: https://nuget.pkg.github.com/radarsearch/index.json
+
+jobs:
+  Radar-Search-Optimizely:
+    runs-on: ubuntu-latest
+    env:
+      package_name: RadarSearchOptimizely
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build -c Release ${{env.package_name}} --no-restore
+
+      - name: Test
+        run: dotnet test --no-restore --verbosity quiet
+
+      - name: Package Nuget
+        run: dotnet pack -c Release --output . --include-source --include-symbols  --no-build -p:PackageVersion=1.0.0 ${{env.package_name}}
+
+      - name: Push
+        run: dotnet nuget push ${{env.package_name}}.1.0.0.nupkg --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
