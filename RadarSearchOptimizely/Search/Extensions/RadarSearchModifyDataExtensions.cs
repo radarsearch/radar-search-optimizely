@@ -18,7 +18,7 @@ namespace RadarSearchOptimizely.Search.Extensions
             {
                 radarSearchData = radarSearchModifyData.SearchData();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // ignored
             }

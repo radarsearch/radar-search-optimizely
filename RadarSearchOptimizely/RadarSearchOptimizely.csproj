@@ -1,20 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<Nullable>disable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<PackageId>RadarSearchCore</PackageId>
-		<Version>2.4.1</Version>
-		<Authors>Reidar Liabø, Kolbein Toreson Foldøy, Steffen Gaustad, Benjamin Fimreite, Kristoffer Davidsen</Authors>
-		<Company>Bouvet ASA</Company>
-		<IsPackable>true</IsPackable>
-		<Description>RadarSearch for .NET 6</Description>
-		<PackageReleaseNotes>Increase search hit limit</PackageReleaseNotes>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<PackageVersion>2.4.1</PackageVersion>
-		<DebugType>embedded</DebugType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/radarsearch/radar-search-optimizely</PackageProjectUrl>
+    <PackageOutputPath>../lib/</PackageOutputPath>
+    <RepositoryUrl>https://github.com/radarsearch/radar-search-optimizely</RepositoryUrl>
+    <Version>1.0.0</Version>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageIcon>icon.jpg</PackageIcon>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IsPackable>true</IsPackable>
 	</PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="readme.md" Pack="true" Visible="false" PackagePath="" />
+    <None Include="icon.jpg" Pack="true" Visible="false" PackagePath="" />
+    <None Include="appsettings.json" Pack="false" Visible="true" PackagePath="" />
+    <None Include="appsettings.Development.json" Pack="false" Visible="true" PackagePath="" />
+  </ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	  <NoWarn>1701,1702,1591</NoWarn>

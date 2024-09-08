@@ -29,7 +29,7 @@ namespace RadarSearchOptimizely.Search.Models.PropertyModels
                     _searchValue += obj.ToString().HtmlStrip() + " ";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 

@@ -56,7 +56,7 @@ namespace RadarSearchOptimizely.Search.Services
 
             LogManager.GetLogger(typeof(IRadarContentService)).Information($"{dataToIndex.Count} pages ready for indexing");
 
-            return dataToIndex;
+            return await Task.FromResult(dataToIndex);
         }
 
         public async Task<List<IRadarIndexData>> ParseData(IContent contentToIndex)

@@ -55,7 +55,7 @@ namespace RadarSearchOptimizely.Search.Models.PropertyModels
                     _searchValue = text;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

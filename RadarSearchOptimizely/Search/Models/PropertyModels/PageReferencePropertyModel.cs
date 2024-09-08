@@ -50,7 +50,7 @@ namespace RadarSearchOptimizely.Search.Models.PropertyModels
                 }
                 _searchValue = SpecialTags.StartReplaceTag + " " + text.Trim().HtmlStrip() + " " + SpecialTags.EndReplaceTag;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
