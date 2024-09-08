@@ -1,4 +1,4 @@
-﻿using RadarSearchOptimizely.Search.Models;
+using RadarSearchOptimizely.Search.Models;
 using RadarSearchOptimizely.Search.Models.Enums;
 using Index = RadarSearchOptimizely.Search.Models.Enums.Index;
 

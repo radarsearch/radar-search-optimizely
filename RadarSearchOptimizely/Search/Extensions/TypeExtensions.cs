@@ -1,4 +1,4 @@
-﻿namespace RadarSearchOptimizely.Search.Extensions
+namespace RadarSearchOptimizely.Search.Extensions
 {
     public static class TypeExtensions
     {

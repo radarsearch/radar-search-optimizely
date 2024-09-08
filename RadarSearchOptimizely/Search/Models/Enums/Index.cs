@@ -1,4 +1,4 @@
-﻿namespace RadarSearchOptimizely.Search.Models.Enums
+namespace RadarSearchOptimizely.Search.Models.Enums
 {
     public enum Index
     {

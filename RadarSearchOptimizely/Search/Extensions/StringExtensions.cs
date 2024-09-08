@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 using RadarSearchOptimizely.Search.Models;
 
 namespace RadarSearchOptimizely.Search.Extensions

@@ -1,117 +1,27 @@
+# Radar Search Optimizely Core
+Optimizely component for indexing optimizely content for Radar Search. The component's task is to automatically send data to Radar Search when content is created or changed. It also has support for full indexing through Optimizely timed jobs.
 
-﻿
+ISearchService implements support for communication between the Optimizely solution and the Radar Search stand-alone search engine.
 
-# Radar Search Core
+With the help of attributes and IRadarSearchModifyData, you can control how content is to be indexed.
 
-## Requirements
+## :toolbox: How to
+Example code and usage documentation can be found [here](/RadarSearchOptimizely/README.md).
+
+## :scroll: Code of Conduct
+
+This project has adopted the code of conduct defined by the Contributor Covenant to clarify expected behavior in our community. See [.NET Foundation Code of Conduct](https://dotnetfoundation.org/about/code-of-conduct) for more information.
+
+## :space_invader: Requirements
 - Optimizely CMS (>= 12.6) 
-- .NET 6.0
+-  .NET >= 6.0
+  
+## :wave: Contributing
+We welcome pull requests for bug fixes, enhancements, and documentation. See [how to contribute](./Contributing.md) for more information. You are also free to create a fork of the repository, and otherwise make any changes you wish.
 
-## Installation
-Add the services to Startup.cs for dependency injection
-``` cs
-using RadarNuget.Search;
-using RadarNuget.Search.Contracts;
+### Flow
 
-public class Startup
-{
-    ...    
-    public void ConfigureServices(IServiceCollection services)
-    {
-        ...
-        services.AddScoped<ISearchService, SearchService>();
-        services.AddScoped<IRadarContentService, RadarContentService>();
-        services.AddScoped<IPropertyIndexService, PropertyIndexService>();
-    }
-}
-```
-Add the following section into appsettings.json
-
-``` json
-"RadarSearchConfiguration": {
-    "IgnoreContentTypes": "SysRecycleBin, SysContentFolder, SysRecycleBin, ImageFile, VideoFile, GenericMedia, BlockData",
-    "RadarApiUrl": "http://<Standalone-RadarSearch-URL>/api/radar/"
-}
-```
-> Add the URL for the IIS hosted RadarSearch standalone application.
-> RadarSearch Standalone Application: https://github.com/bouvet-bergen/RadarSearch/tree/StandaloneApp
-
-## Content
-The package includes:
-- A scheduled job that will parse all content and send it the RadarSearch Standalone application for indexing
-- An event handler that sends indexing data to RadarSearch whenever content is being published, moved or deleted
-- An interface, ISearchService, that is used to send API calls from the Optimizely application to the RadarSearch Standalone application for searching and indexing
-
-## Example usage
-``` cs
-using RadarNuget.Search;
-
-public class SearchPageController : PageControllerBase<SearchPage>
-{
-    private readonly ISearchService _searchService;
-
-    public SearchPageController(ISearchService searchService)
-    {
-        _searchService = searchService;
-    }
-
-    public async Task<ViewResult> Index(SearchPage currentPage, string q, int page = 1)
-    {
-        var query = new RadarQuery()
-        {
-            SearchString = q,
-            Page = page,
-            PageSize = 10,
-            SearchType = "SomePageType",
-            AllowEmptySearchString = false
-        };
-
-        var model = new SearchContentModel(currentPage)
-        {
-            RadarSearchResult = await _searchService.Search(query),
-            SearchQuery = q
-        };
-
-        return View(model);
-    }
-}
-```
-
-## Custom search data (optional)
-``` cs
-public class SitePageData : PageData, IRadarSearchModifyData
-{
-    [Display(GroupName = "MetaData", Order = 20)]
-    [Searchable(false)]
-    [UIHint(UIHint.Image)]
-    [ScaffoldColumn(false)]
-    public virtual ContentReference PageImage { get; set; }
-
-    [Display(GroupName = SystemTabNames.Content, Order = 3)]
-    [CultureSpecific]
-    [Searchable(true)]
-    public virtual string PageTitle { get; set; }
-
-    [Display(GroupName = SystemTabNames.Content, Order = 10)]
-    [CultureSpecific]
-    [UIHint(UIHint.Textarea)]
-    public virtual string PageDescription { get; set; }
-
-    #region RadarSearch
-
-    public virtual RadarSearchData SearchData()
-    {
-        return RadarSearchData.Create()
-            .SetTitle(PageTitle ?? string.Empty)
-            .SetDescription(PageDescription ?? string.Empty)
-            .SetImage(PageImage != null ? PageImage.ID.ToString(CultureInfo.InvariantCulture) : string.Empty);
-    }
-
-    #endregion
-}
-```
-> Note: Remember to inherit the IRadarSearchModifyData interface
-
-## Further Work
-- Add a metadata dictionary (e.g. Dictionary<string, object>) to SearchResult
-> Tip: To test local changes, run **dotnet pack** to create a local nuget package 
+- Create a new feature branch from the main branch
+- Create a PR against main and fix possible merge conflicts
+- Delete your feature branch after an approved and merged PR
+- Wait for approval from the project comunity

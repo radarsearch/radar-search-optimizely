@@ -1,4 +1,4 @@
-﻿using RadarSearchOptimizely.Search.Contracts;
+using RadarSearchOptimizely.Search.Contracts;
 
 namespace RadarSearchOptimizely.Search.Models
 {

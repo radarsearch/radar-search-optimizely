@@ -1,4 +1,4 @@
-﻿namespace RadarSearchOptimizely.Search.Contracts
+namespace RadarSearchOptimizely.Search.Contracts
 {
     public interface IPropertyModel
     {

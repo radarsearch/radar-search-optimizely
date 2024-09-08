@@ -1,17 +1,15 @@
+# :toolbox: How to
 
-﻿
+## Install nuget package
 
-# Radar Search Core
-
-## Requirements
-- Optimizely CMS (>= 12.6) 
-- .NET 6.0
+Install nuget package from [here]('https://www.nuget.org/packages/RadarSearchOptimizely')
 
 ## Installation
+
 Add the services to Startup.cs for dependency injection
+
 ``` cs
-using RadarNuget.Search;
-using RadarNuget.Search.Contracts;
+using RadarSearchOptimizely.Search.Extensions;
 
 public class Startup
 {
@@ -19,12 +17,11 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         ...
-        services.AddScoped<ISearchService, SearchService>();
-        services.AddScoped<IRadarContentService, RadarContentService>();
-        services.AddScoped<IPropertyIndexService, PropertyIndexService>();
+        services.AddRadarSearchOptimizely();
     }
 }
 ```
+
 Add the following section into appsettings.json
 
 ``` json
@@ -33,18 +30,22 @@ Add the following section into appsettings.json
     "RadarApiUrl": "http://<Standalone-RadarSearch-URL>/api/radar/"
 }
 ```
+
 > Add the URL for the IIS hosted RadarSearch standalone application.
 > RadarSearch Standalone Application: https://github.com/bouvet-bergen/RadarSearch/tree/StandaloneApp
 
 ## Content
+
 The package includes:
+
 - A scheduled job that will parse all content and send it the RadarSearch Standalone application for indexing
 - An event handler that sends indexing data to RadarSearch whenever content is being published, moved or deleted
 - An interface, ISearchService, that is used to send API calls from the Optimizely application to the RadarSearch Standalone application for searching and indexing
 
 ## Example usage
+
 ``` cs
-using RadarNuget.Search;
+using RadarSearchOptimizely.Search;
 
 public class SearchPageController : PageControllerBase<SearchPage>
 {
@@ -78,6 +79,7 @@ public class SearchPageController : PageControllerBase<SearchPage>
 ```
 
 ## Custom search data (optional)
+
 ``` cs
 public class SitePageData : PageData, IRadarSearchModifyData
 {
@@ -110,8 +112,5 @@ public class SitePageData : PageData, IRadarSearchModifyData
     #endregion
 }
 ```
-> Note: Remember to inherit the IRadarSearchModifyData interface
 
-## Further Work
-- Add a metadata dictionary (e.g. Dictionary<string, object>) to SearchResult
-> Tip: To test local changes, run **dotnet pack** to create a local nuget package 
+> Note: Remember to inherit the IRadarSearchModifyData interface

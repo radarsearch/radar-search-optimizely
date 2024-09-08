@@ -1,4 +1,4 @@
-﻿using EPiServer.Core;
+using EPiServer.Core;
 using RadarSearchOptimizely.Search.Contracts;
 using RadarSearchOptimizely.Search.Extensions;
 

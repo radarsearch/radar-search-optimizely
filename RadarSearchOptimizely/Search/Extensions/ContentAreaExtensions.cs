@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Globalization;

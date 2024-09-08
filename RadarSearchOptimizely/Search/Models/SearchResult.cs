@@ -1,4 +1,4 @@
-﻿namespace RadarSearchOptimizely.Search.Models
+namespace RadarSearchOptimizely.Search.Models
 {
     public class SearchResult
     {

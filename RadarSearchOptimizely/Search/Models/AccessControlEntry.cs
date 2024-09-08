@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 using RadarSearchOptimizely.Search.Contracts;
 using RadarSearchOptimizely.Search.Models.Enums;
 

@@ -1,4 +1,4 @@
-﻿using RadarSearchOptimizely.Search.Models.Enums;
+using RadarSearchOptimizely.Search.Models.Enums;
 using Index = RadarSearchOptimizely.Search.Models.Enums.Index;
 
 namespace RadarSearchOptimizely.Search.Contracts

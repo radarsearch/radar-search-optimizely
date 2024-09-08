@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using EPiServer.Core;
 using RadarSearchOptimizely.Search.Extensions;
 using RadarSearchOptimizely.Search.Models.Enums;
@@ -18,7 +18,7 @@ namespace RadarSearchOptimizely.Search.Models.PropertyModels
 
             try
             {
-                var readOnlyCollectionObject = (ICollection)property.Value;
+                var readOnlyCollectionObject = (ICollection) property.Value;
                 if (readOnlyCollectionObject == null)
                     return;
 

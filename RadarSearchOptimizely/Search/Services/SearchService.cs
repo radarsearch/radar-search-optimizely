@@ -1,5 +1,6 @@
 using System.Text;
 using EPiServer.Logging;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RadarSearchOptimizely.Search.Contracts;
 using RadarSearchOptimizely.Search.Extensions;

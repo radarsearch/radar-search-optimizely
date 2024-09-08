@@ -6,6 +6,7 @@ using EPiServer.Logging;
 using EPiServer.Security;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
+using Microsoft.Extensions.Configuration;
 using RadarSearchOptimizely.Search.Contracts;
 using RadarSearchOptimizely.Search.Extensions;
 using RadarSearchOptimizely.Search.Models;
@@ -20,7 +21,7 @@ namespace RadarSearchOptimizely.Search.Services
         private readonly ISearchService _searchService;
         private readonly IPropertyIndexService _propertyIndexService;
         private readonly IConfiguration _configuration;
-        private readonly EPiServer.Logging.ILogger _logger;
+        private readonly ILogger _logger;
 
         public RadarContentService(IExtendedContentRepository contentRepository,
             ISearchService searchService,
@@ -167,7 +168,7 @@ namespace RadarSearchOptimizely.Search.Services
                     searchData.Acl.Add(new AccessControlEntry
                     {
                         Name = rawAce.Name,
-                        Level = (AclLevel)rawAce.Access
+                        Level = (AclLevel) rawAce.Access
                     });
                 }
 

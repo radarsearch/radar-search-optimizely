@@ -1,4 +1,4 @@
-﻿namespace RadarSearchOptimizely.Search.Attributes
+namespace RadarSearchOptimizely.Search.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class RadarLocalBlockAttribute : Attribute

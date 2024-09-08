@@ -1,4 +1,4 @@
-﻿using EPiServer.Core;
+using EPiServer.Core;
 using RadarSearchOptimizely.Search.Extensions;
 
 namespace RadarSearchOptimizely.Search.Models.PropertyModels

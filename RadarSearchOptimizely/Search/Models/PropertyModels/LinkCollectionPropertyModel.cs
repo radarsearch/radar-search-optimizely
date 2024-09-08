@@ -1,4 +1,4 @@
-﻿using EPiServer.Core;
+using EPiServer.Core;
 using EPiServer.SpecializedProperties;
 using RadarSearchOptimizely.Search.Extensions;
 using RadarSearchOptimizely.Search.Models.Enums;
